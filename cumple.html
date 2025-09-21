@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz cumpleaños </title>
+    <link
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Dancing+Script:wght@400..700&family=Pacifico&family=Rochester&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cumple.css" />
+  </head>
+  <body>
+    <div class="card">
+      <div class="outside">
+        <div class="front">
+          <p>FELIZ <br>CUMPLEAÑOS 💗 </p>
+          <div class="cake">
+            <div class="top-layer"></div>
+            <div class="middle-layer"></div>
+            <div class="bottom-layer"></div>
+            <div class="candle"></div>
+          </div>
+        </div>
+        <div class="back"></div>
+      </div>
+      <div class="inside">
+        <p>SAPO VERDE TO YOUU <br>"Ya 18 añitos, pinche niño meado, y pensar que te conocí cuando tenías 16 😭 (creo, soy mala memorizando, JAJAJS), y agradezco que sigas a mi lado. Eres una personita increíble y muy especial para mí, y espero que sigas siendo así por muchos añitos más. jjj" <br> TQM!
+        </p>
+        <h1><img src="imagenes/6bea73d1b7cc063ce809d8010d5dce53.gif" style="width: 220px; height: auto; vertical-align: middle;"></h1 >
+      </div>
+    </div>
+
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    </head>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const balloons = document.querySelectorAll(".balloon");
+    
+        // Lista de colores
+        const colors = [
+          "rgba(255, 182, 193, 0.6)", /* rosita */
+          "rgba(173, 216, 230, 0.6)", /* azul */
+          "rgba(240, 230, 140, 0.6)", /* amarillo */
+          "rgba(152, 251, 152, 0.6)", /* verde */
+          "rgba(221, 160, 221, 0.6)", /* Lila */
+          "rgba(255, 218, 185, 0.6)", /* durazno? */
+          "rgba(250, 235, 215, 0.6)", /* Beige */
+          "rgba(245, 222, 179, 0.6)"  /* Crema */
+        ];
+    
+        balloons.forEach((balloon) => {
+          const randomX = Math.random() * (window.innerWidth - 120); // Cubrimos toda la pantalla :D
+          const randomDuration = Math.random() * 3 + 4; // Duración entre 4 y 7 segundos
+          const randomDelay = Math.random() * 3 + 1; // Retraso aleatorio
+          const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Colores aleatorios
+    
+          balloon.style.left = `${randomX}px`; // asignamos la posición
+          balloon.style.animationDuration = `${randomDuration}s`;
+          balloon.style.animationDelay = `${randomDelay}s`;
+          balloon.style.opacity = "1";
+          balloon.style.backgroundColor = randomColor;
+          balloon.style.setProperty("--balloon-color", randomColor); // nudo del globo
+        });
+      });
+   
+    
+    </script>
+    
+    
+    
+
+
+  </body>
+</html>
+
+

@@ -1,0 +1,243 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Pacifico", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Fondo de la tarjeta */
+body {
+  background-color: #acd6e0;
+  overflow: hidden; /* Evita el desplazamiento cuando los globos suben */
+}
+
+/* ----- Tarjeta de cumplee ----- */
+.card {
+  width: 640px;
+  height: 400px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-perspective: 1200px;
+  perspective: 1200px;
+  transition: 1s;
+}
+
+.card:hover {
+  transform: rotate(-5deg);
+}
+
+.card:hover .outside {
+  transform: rotateY(-130deg);
+}
+
+.outside,
+.inside {
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  left: 50.1%;
+
+}
+
+
+.inside {
+  background: linear-gradient(to right, #e7e7e7, #ffffff 30%);
+  line-height: 2;
+  padding: 0 20px;
+  text-align: center; color:#e17593;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  left: 50%;
+  font-size: 14px; 
+}
+
+
+.outside {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  z-index: 1;
+  transform-origin: left;
+  transition: 2s;
+  cursor: pointer;
+}
+
+.front,
+.back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+}
+
+.front {
+  background-color: #ffffff;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background: linear-gradient(to left, #e7e7e7, #ffffff 30%);
+}
+
+/* ----- El pastelito ----- */
+.cake {
+  width: 100%;
+  position: absolute;
+  bottom: 30px;
+}
+
+.top-layer,
+.middle-layer,
+.bottom-layer {
+  height: 80px;
+  width: 240px;
+  background-repeat: repeat;
+  background-size: 60px 100px;
+  background-position: 28px 0;
+  background-image: linear-gradient(
+      transparent 50px,
+      #fedbab 50px,
+      #fedbab 60px,
+      transparent 60px
+    ),
+    radial-gradient(circle at 30px 5px, #acd6e0 30px, #dcbe9b 31px);
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  margin: auto;
+}
+
+.middle-layer {
+  transform: scale(0.85);
+  top: 6px;
+}
+
+.top-layer {
+  transform: scale(0.7);
+  top: 26px;
+}
+
+/* ----- Velita del pastel ----- */
+.candle {
+  height: 45px;
+  width: 15px;
+  background: repeating-linear-gradient(
+    45deg,
+    #84cecd 0,
+    #84cecd 5px,
+    #ffffff 5px,
+    #ffffff 10px
+  );
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 202px;
+}
+
+.candle:before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  background-color: #ffa500;
+  border-radius: 0 50% 50% 50%;
+  bottom: 48px;
+  transform: rotate(45deg);
+  left: -1px;
+}
+
+.outside p {
+  font-size: 23px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  text-align: center;
+  letter-spacing: 6px;
+  color: #78bcc1; /* Azul neón */
+  text-shadow: 0 0 5px #feffff, 0 0 4px #98bfc6, 0 0 15px #acbec4, 0 0 20px #658aa3;
+}
+
+.inside h1 {
+  font-size: 120px;
+  line-height: 120px;
+}
+
+/* ----- Globitos----- */
+.balloon {
+  position: absolute;
+  width: 100px;
+  height: 110px;
+  border-radius: 50%;
+  bottom: -150px; /* Comienza fuera de la pantalla */
+  opacity: 0; /* Ocultamos los globos al inicio */
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.7) 10%, transparent 50%), 
+              var(--balloon-color); /* Brillo + color del globo */
+  animation: move-up linear infinite;
+}
+
+/* Hilo del globo */
+.balloon::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 150px;
+  background-color: white;
+  top: 110px;
+  left: 50%;
+}
+
+/* Nudo del globo */
+.balloon::after {
+  content: '';
+  position: absolute;
+  border-bottom: 12px solid var(--balloon-color); /* Nudo del color del globo */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: 109px;
+  left: 41%;
+}
+
+/* Colores de los globitos */
+:root {
+  --balloon-color1: #ffb6c1; 
+  --balloon-color2: #add8e6; 
+  --balloon-color3: #f0e68c; 
+  --balloon-color4: #98fb98; 
+  --balloon-color5: #dda0dd; 
+  --balloon-color6: #ffdab9; 
+  --balloon-color7: #faebd7; 
+  --balloon-color8: #f5deb3; 
+}
+
+/* Aplica los colores a cada globo */
+.balloon:nth-child(1) { --balloon-color: var(--balloon-color1); }
+.balloon:nth-child(2) { --balloon-color: var(--balloon-color2); }
+.balloon:nth-child(3) { --balloon-color: var(--balloon-color3); }
+.balloon:nth-child(4) { --balloon-color: var(--balloon-color4); }
+.balloon:nth-child(5) { --balloon-color: var(--balloon-color5); }
+.balloon:nth-child(6) { --balloon-color: var(--balloon-color6); }
+.balloon:nth-child(7) { --balloon-color: var(--balloon-color7); }
+.balloon:nth-child(8) { --balloon-color: var(--balloon-color8); }
+
+/* Animación de los globos */
+@keyframes move-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1; 
+  }
+  100% {
+    transform: translateY(-120vh); 
+    opacity: 0; 
+  }
+}
+
+
